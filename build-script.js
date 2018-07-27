@@ -19,6 +19,9 @@ if (fs.existsSync(BUILD_DIR)) {
 }
 fs.mkdirSync(BUILD_DIR);
 
+// copy icon to BUILD_DIR
+fs.copyFileSync("icon.png", `${BUILD_DIR}/icon.png`);
+
 // 运行npm shrinkwrap以获得所有依赖的版本
 execSync("npm shrinkwrap", { stdio: [0, 1, 2] });
 
@@ -78,7 +81,11 @@ function buildApp() {
                 loader: "style-loader"
               },
               {
-                loader: "css-loader"
+                loader: "css-loader",
+                options: {
+                  modules: true,
+                  localIdentName: "[name]-[local]-[hash:base64:4]"
+                }
               },
               {
                 loader: "less-loader"

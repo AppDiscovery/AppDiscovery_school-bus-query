@@ -1,4 +1,5 @@
 import React from "react";
+import cx from "classnames";
 import styles from "./ListItem.less";
 
 class ListItem extends React.Component {
@@ -7,7 +8,7 @@ class ListItem extends React.Component {
 
     this.state = {
       missed: false,
-      waitTime: 0,
+      waitTime: "...",
       hour: 0,
       minute: 0
     };
@@ -58,14 +59,21 @@ class ListItem extends React.Component {
   }
 
   render() {
-    const { time } = this.props;
+    const { time, index } = this.props;
     const { missed, waitTime } = this.state;
 
-    const waitInfo = missed ? `该班次已发出` : `距离发车还有${waitTime}`;
     return (
-      <div className={styles.root}>
+      <div className={cx(styles.root, { [styles.greyBackground]: index % 2 })}>
         <div className={styles.time}>{time}</div>
-        <span>{waitTime === 0 ? "" : waitInfo}</span>
+        <div className={styles.info}>
+          {missed ? (
+            <span className={styles.missed}>该班次已发出</span>
+          ) : (
+            <span>
+              距发车还有<span className={styles.wait}>{waitTime}</span>
+            </span>
+          )}
+        </div>
       </div>
     );
   }

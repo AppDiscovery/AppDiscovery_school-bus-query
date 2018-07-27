@@ -16,7 +16,9 @@ class List extends React.Component {
       <div className={cx(className, styles.root)}>
         <div className={styles.title}>{title}</div>
         <div className={styles.title}>{`${fromPos} -> ${toPos}`}</div>
-        {time.map(item => <ListItem time={item} />)}
+        {time.map((item, index) => (
+          <ListItem key={`key-${item}`} time={item} index={index} />
+        ))}
       </div>
     );
   }

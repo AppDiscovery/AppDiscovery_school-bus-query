@@ -1,8 +1,8 @@
 {
-  "display_name": "",
+  "display_name": "校车时刻表",
   "location": {
-    "latitude": 0,
-    "longitude": 0,
-    "radius": 0
+    "latitude": 31.189687,
+    "longitude": 121.596479,
+    "radius": 50
   }
 }

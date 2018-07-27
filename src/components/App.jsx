@@ -13,7 +13,7 @@ class App extends Component {
   render() {
     return (
       <div className={styles.root}>
-        <div className={styles.title}>2333</div>
+        <div className={styles.title}>校车时刻表</div>
         <List className={styles.list} data={busData} />
       </div>
     );
